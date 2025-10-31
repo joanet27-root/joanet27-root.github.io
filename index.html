@@ -9,12 +9,12 @@
   <!-- Social share -->
   <meta property="og:title" content="Joan Carrillo — Industrial Computer Engineering & Robotics" />
   <meta property="og:description" content="Robotics, automation, and software engineering projects." />
-  <meta property="og:image" content="https://joanet27-root.github.io/assets/robots.jpeg" />
+  <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
   <style>
     :root{
       --bg:#0b0e14; --card:#121622; --txt:#e6e6e6; --muted:#a8b0c0; --acc:#4fb3ff;
-      --chip:#1b2030; --bd:#1e2433;
+      --chip:#1b2030; --bd:#1e2433; --shadow:rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
@@ -26,10 +26,26 @@
     .title p{margin:4px 0 0;color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .chip{background:var(--chip);border:1px solid var(--bd);padding:6px 10px;border-radius:999px;font-size:14px}
+    section{margin:28px 0}
+    footer{margin:32px 0;color:var(--muted);font-size:14px}
+    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:0 8px 18px var(--shadow)}
+    .btn:focus{outline:2px solid var(--acc);outline-offset:3px}
+
+    /* Hero with carousel */
     .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:24px 0;background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
     .hero h2{margin:0 0 6px}
-    .hero img{width:100%;height:100%;max-height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--bd)}
-    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600}
+
+    .carousel{position:relative;width:100%;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--bd);background:#0e1422}
+    .carousel img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .35s ease}
+    .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:none;color:#fff;font-size:26px;cursor:pointer;padding:6px 10px;border-radius:50%;line-height:1}
+    .nav:hover{background:rgba(0,0,0,.65)}
+    .prev{left:8px} .next{right:8px}
+
+    .dots{position:absolute;left:0;right:0;bottom:8px;display:flex;gap:6px;justify-content:center}
+    .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);border:1px solid rgba(0,0,0,.25);cursor:pointer}
+    .dot.active{background:#fff}
+
+    /* Cards grid */
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:18px}
     .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;transition:transform .15s ease, border-color .15s ease}
     .card:hover{transform:translateY(-3px);border-color:var(--acc)}
@@ -37,8 +53,7 @@
     .card p{margin:8px 0 12px;color:var(--muted)}
     .meta{display:flex;gap:8px;flex-wrap:wrap}
     .meta span{font-size:12px;background:#0e1422;border:1px solid var(--bd);padding:4px 8px;border-radius:8px;color:var(--muted)}
-    section{margin:28px 0}
-    footer{margin:32px 0;color:var(--muted);font-size:14px}
+
     @media (max-width:800px){.hero{grid-template-columns:1fr}}
     @media (max-width:600px){header{flex-direction:column;align-items:flex-start}}
   </style>
@@ -51,6 +66,7 @@
         <h1>Joan Carrillo — Industrial Computer Engineering & Robotics</h1>
         <p>Focused on control systems, computer vision and automation. Looking for junior roles in Europe (robotics / controls / software).</p>
         <div class="chips" aria-label="Skills">
+          <span class="chip">Maths · Physics</span>
           <span class="chip">ROS · ROS2</span>
           <span class="chip">Python · C++</span>
           <span class="chip">KUKA · ABB · FANUC</span>
@@ -60,15 +76,25 @@
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" aria-labelledby="feat">
       <div>
-        <h2>Featured Projects</h2>
-        <p>A brief selection of projects including code, videos and technical notes. See more on my <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.</p>
+        <h2 id="feat">Featured Projects</h2>
+        <p>A brief selection of projects including code, videos and technical notes. See more on my 
+          <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.
+        </p>
         <p>
-          <a class="btn" href="CV_Joan.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <a class="btn" href="assets/CV_Joan.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
         </p>
       </div>
-      <img src="assets/robots.jpeg" alt="Industrial robotics cell — robots" />
+
+      <!-- Carousel -->
+      <div class="carousel" role="region" aria-label="Robotics gallery">
+        <button class="nav prev" aria-label="Previous image" type="button">❮</button>
+        <img id="carousel-image" src="assets/robots1.jpeg" alt="Industrial robotics photo 1" loading="eager" />
+        <div class="dots" aria-hidden="true"></div>
+        <button class="nav next" aria-label="Next image" type="button">❯</button>
+        <noscript><img src="assets/robots1.jpeg" alt="Industrial robotics" /></noscript>
+      </div>
     </section>
 
     <section>
@@ -76,27 +102,21 @@
         <article class="card">
           <h3>Vision-based Manipulation (ROS2 + OpenCV)</h3>
           <p>Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.</p>
-          <div class="meta">
-            <span>ROS2</span><span>OpenCV</span><span>Python</span><span>ABB</span>
-          </div>
+          <div class="meta"><span>ROS2</span><span>OpenCV</span><span>Python</span><span>ABB</span></div>
           <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a> · <a href="#" aria-disabled="true" title="Video coming soon">Video</a></p>
         </article>
 
         <article class="card">
           <h3>PLC + SCADA for Assembly Cell</h3>
           <p>Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.</p>
-          <div class="meta">
-            <span>TIA Portal</span><span>WinCC</span><span>IEC 61131-3</span>
-          </div>
+          <div class="meta"><span>TIA Portal</span><span>WinCC</span><span>IEC 61131-3</span></div>
           <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a></p>
         </article>
 
         <article class="card">
           <h3>Mobile Robot Localization (EKF + LiDAR)</h3>
           <p>Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.</p>
-          <div class="meta">
-            <span>C++</span><span>EKF</span><span>LiDAR</span>
-          </div>
+          <div class="meta"><span>C++</span><span>EKF</span><span>LiDAR</span></div>
           <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a></p>
         </article>
       </div>
@@ -111,8 +131,92 @@
       </p>
       <p>© <span id="y"></span> Joan Carrillo. Built with GitHub Pages.</p>
     </section>
+
     <footer>Tip: each repository should include a README with images, requirements, and usage steps.</footer>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // --- Simple Image Carousel with autoplay, dots, keyboard & swipe ---
+    const images = [
+      "assets/robots1.jpeg",
+      "assets/robots2.jpeg",
+      "assets/robots3.jpeg"
+    ];
+
+    // Preload
+    images.slice(1).forEach(src => { const i = new Image(); i.src = src; });
+
+    const img = document.getElementById("carousel-image");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+    const dotsWrap = document.querySelector(".dots");
+    let index = 0;
+    let autoplay = true;
+    let timer = null;
+
+    // Create dots
+    images.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "dot" + (i===0 ? " active" : "");
+      d.type = "button";
+      d.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+
+    function updateDots() {
+      [...dotsWrap.children].forEach((d, i) => {
+        d.classList.toggle("active", i === index);
+      });
+    }
+
+    function goTo(i) {
+      index = (i + images.length) % images.length;
+      img.style.opacity = 0.25;
+      // small fade
+      setTimeout(() => { img.src = images[index]; img.alt = "Industrial robotics photo " + (index+1); img.style.opacity = 1; }, 120);
+      updateDots();
+      restart();
+    }
+
+    function next() { goTo(index + 1); }
+    function prev() { goTo(index - 1); }
+
+    nextBtn.addEventListener("click", next);
+    prevBtn.addEventListener("click", prev);
+
+    // Keyboard arrows
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    });
+
+    // Autoplay (respect reduced motion)
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function start() {
+      if (!autoplay || prefersReduced) return;
+      timer = setInterval(next, 5000);
+    }
+    function stop() { if (timer) clearInterval(timer); }
+    function restart() { stop(); start(); }
+
+    const carousel = document.querySelector(".carousel");
+    carousel.addEventListener("mouseenter", () => { autoplay = false; stop(); });
+    carousel.addEventListener("mouseleave", () => { autoplay = true; start(); });
+
+    // Touch swipe
+    let startX = null;
+    carousel.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, {passive:true});
+    carousel.addEventListener("touchend", (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
+      startX = null;
+    });
+
+    start();
+  </script>
 </body>
 </html>
