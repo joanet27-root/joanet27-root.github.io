@@ -4,8 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Joan — Ingeniería Informática Industrial & Robótica</title>
-  <meta name="description" content="Portafolio de Joan: robótica, automatización, control y software." />
+  <meta name="description" content="Portafolio de Joan: robótica, automatización, control y software. Proyectos con ROS, visión por computador, PLC y Linux." />
   <link rel="icon" href="data:," />
+  <!-- OpenGraph / Share preview -->
+  <meta property="og:title" content="Joan — Ingeniería Informática Industrial & Robótica" />
+  <meta property="og:description" content="Proyectos con ROS, visión por computador, PLC y Linux." />
+  <meta property="og:image" content="https://joanet27-root.github.io/assets/robots.jpeg" />
+  <meta property="og:type" content="website" />
   <style>
     :root{
       --bg:#0b0e14; --card:#121622; --txt:#e6e6e6; --muted:#a8b0c0; --acc:#4fb3ff;
@@ -21,6 +26,10 @@
     .title p{margin:4px 0 0;color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
     .chip{background:var(--chip);border:1px solid var(--bd);padding:6px 10px;border-radius:999px;font-size:14px}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:24px 0;background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
+    .hero h2{margin:0 0 6px}
+    .hero img{width:100%;height:100%;max-height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--bd)}
+    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:18px}
     .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;transition:transform .15s ease, border-color .15s ease}
     .card:hover{transform:translateY(-3px);border-color:var(--acc)}
@@ -30,23 +39,21 @@
     .meta span{font-size:12px;background:#0e1422;border:1px solid var(--bd);padding:4px 8px;border-radius:8px;color:var(--muted)}
     section{margin:28px 0}
     footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600}
-    .hero{background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
-    .hero h2{margin:0 0 6px}
+    @media (max-width:800px){.hero{grid-template-columns:1fr}}
     @media (max-width:600px){header{flex-direction:column;align-items:flex-start}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <img src="assets/avatar.jpg" alt="Joan — perfil" />
+      <img src="assets/avatar.jpeg" alt="Foto de Joan — perfil" />
       <div class="title">
         <h1>Joan — Ingeniería Informática Industrial & Robótica</h1>
         <p>Control, visión artificial y automatización. Busco roles junior en Europa (robotics / controls / software).</p>
-        <div class="chips">
+        <div class="chips" aria-label="Tecnologías">
           <span class="chip">ROS · ROS2</span>
           <span class="chip">Python · C++</span>
-          <span class="chip">PLC · Siemens/Beckhoff</span>
+          <span class="chip">KUKA · ABB · FANUC</span>
           <span class="chip">Computer Vision</span>
           <span class="chip">Linux</span>
         </div>
@@ -54,20 +61,25 @@
     </header>
 
     <section class="hero">
-      <h2>Proyectos destacados</h2>
-      <p>Una selección breve de proyectos con código, video y notas técnicas. Más en mi <a href="https://github.com/tuusuario">GitHub</a>.</p>
-      <a class="btn" href="CV_Joan.pdf">Descargar CV (PDF)</a>
+      <div>
+        <h2>Proyectos destacados</h2>
+        <p>Selección de proyectos con código, vídeo y notas técnicas. Más en mi <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p>
+          <a class="btn" href="CV_Joan.pdf" target="_blank" rel="noopener">Descargar CV (PDF)</a>
+        </p>
+      </div>
+      <img src="assets/robots.jpeg" alt="Célula de robótica industrial — robots" />
     </section>
 
     <section>
       <div class="grid">
         <article class="card">
           <h3>Manipulación con visión (ROS2 + OpenCV)</h3>
-          <p>Pipeline de detección, pose estimation y pick&place con brazo ABB. Control en ROS2, nodo de visión en Python.</p>
+          <p>Detección y pose estimation con OpenCV; pick&place con brazo ABB. Nodos ROS2 en Python, pipeline de control y sincronización.</p>
           <div class="meta">
             <span>ROS2</span><span>OpenCV</span><span>Python</span><span>ABB</span>
           </div>
-          <p><a href="https://github.com/tuusuario/ros2-vision-manipulation">Repositorio</a> · <a href="https://youtu.be/tu-demo">Vídeo</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repositorio</a> · <a href="#" aria-disabled="true" title="Vídeo próximamente">Vídeo</a></p>
         </article>
 
         <article class="card">
@@ -76,7 +88,7 @@
           <div class="meta">
             <span>TIA Portal</span><span>WinCC</span><span>IEC 61131-3</span>
           </div>
-          <p><a href="https://github.com/tuusuario/plc-assembly-cell">Repositorio</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repositorio</a></p>
         </article>
 
         <article class="card">
@@ -85,7 +97,7 @@
           <div class="meta">
             <span>C++</span><span>EKF</span><span>LiDAR</span>
           </div>
-          <p><a href="https://github.com/tuusuario/mobile-robot-localization">Repositorio</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repositorio</a></p>
         </article>
       </div>
     </section>
@@ -93,13 +105,13 @@
     <section>
       <h2>Contacto</h2>
       <p>
-        <strong>Email:</strong> <a href="mailto:tuemail@dominio.com">tuemail@dominio.com</a> ·
-        <strong>GitHub:</strong> <a href="https://github.com/tuusuario">@tuusuario</a> ·
-        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/tuusuario">/in/tuusuario</a>
+        <strong>Email:</strong> <a href="mailto:joaneet27@gmail.com">joaneet27@gmail.com</a> ·
+        <strong>GitHub:</strong> <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">@joanet27-root</a> ·
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com" target="_blank" rel="noopener" title="Añade aquí tu enlace real">/in/tu-enlace</a>
       </p>
       <p>© <span id="y"></span> Joan. Hecho con GitHub Pages.</p>
     </section>
-    <footer>Consejo: enlaza cada proyecto a un README con capturas, requisitos y cómo ejecutar.</footer>
+    <footer>Consejo: en cada repo, añade un README con capturas, requisitos y cómo ejecutar.</footer>
   </div>
   <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
