@@ -6,7 +6,6 @@
   <title>Joan Carrillo — Industrial Computer Engineering & Robotics</title>
   <meta name="description" content="Portfolio of Joan Carrillo — robotics, automation, computer vision and control engineering projects." />
   <link rel="icon" href="data:," />
-  <!-- Social share -->
   <meta property="og:title" content="Joan Carrillo — Industrial Computer Engineering & Robotics" />
   <meta property="og:description" content="Robotics, automation, and software engineering projects." />
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
@@ -20,7 +19,7 @@
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
     a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
     .wrap{max-width:980px;margin:0 auto;padding:24px}
-    header{display:flex;gap:20px;align-items:center;padding:28px 0;border-bottom:1px solid var(--bd)}
+    header{display:flex;gap:20px;align-items:center;padding:28px 0;border-bottom:1px solid var(--bd);position:relative}
     header img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:2px solid var(--bd)}
     .title h1{margin:0;font-size:28px}
     .title p{margin:4px 0 0;color:var(--muted)}
@@ -29,7 +28,11 @@
     section{margin:28px 0}
     footer{margin:32px 0;color:var(--muted);font-size:14px}
     .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:0 8px 18px var(--shadow)}
-    .btn:focus{outline:2px solid var(--acc);outline-offset:3px}
+
+    /* Language switcher */
+    .lang-switch{position:absolute;right:0;top:8px;display:flex;gap:8px}
+    .lang-switch button{width:32px;height:32px;border-radius:50%;border:1px solid var(--bd);background:#0f1524;cursor:pointer;font-size:18px;line-height:1}
+    .lang-switch button[aria-pressed="true"]{outline:2px solid var(--acc);outline-offset:2px}
 
     /* Hero with carousel */
     .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:24px 0;background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
@@ -40,7 +43,6 @@
     .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:none;color:#fff;font-size:26px;cursor:pointer;padding:6px 10px;border-radius:50%;line-height:1}
     .nav:hover{background:rgba(0,0,0,.65)}
     .prev{left:8px} .next{right:8px}
-
     .dots{position:absolute;left:0;right:0;bottom:8px;display:flex;gap:6px;justify-content:center}
     .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);border:1px solid rgba(0,0,0,.25);cursor:pointer}
     .dot.active{background:#fff}
@@ -55,7 +57,7 @@
     .meta span{font-size:12px;background:#0e1422;border:1px solid var(--bd);padding:4px 8px;border-radius:8px;color:var(--muted)}
 
     @media (max-width:800px){.hero{grid-template-columns:1fr}}
-    @media (max-width:600px){header{flex-direction:column;align-items:flex-start}}
+    @media (max-width:600px){header{flex-direction:column;align-items:flex-start}.lang-switch{position:static;align-self:flex-end;margin-left:auto}}
   </style>
 </head>
 <body>
@@ -63,27 +65,31 @@
     <header>
       <img src="assets/avatar.jpeg" alt="Profile photo of Joan Carrillo" />
       <div class="title">
-        <h1>Joan Carrillo — Industrial Computer Engineering & Robotics</h1>
-        <p>Focused on control systems, computer vision and automation. Looking for junior roles in Europe (robotics / controls / software).</p>
+        <h1 data-i18n="header_title">Joan Carrillo — Industrial Computer Engineering & Robotics</h1>
+        <p data-i18n="header_sub">Focused on control systems, computer vision and automation. Looking for junior roles in Europe (robotics / controls / software).</p>
         <div class="chips" aria-label="Skills">
           <span class="chip">Maths · Physics</span>
           <span class="chip">ROS · ROS2</span>
           <span class="chip">Python · C++</span>
           <span class="chip">KUKA · ABB · FANUC</span>
-          <span class="chip">Computer Vision</span>
+          <span class="chip" data-i18n="chip_cv">Computer Vision</span>
           <span class="chip">Linux</span>
         </div>
+      </div>
+
+      <!-- Language Switcher -->
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true" title="English">🇬🇧</button>
+        <button type="button" data-lang="es" aria-pressed="false" title="Español">🇪🇸</button>
       </div>
     </header>
 
     <section class="hero" aria-labelledby="feat">
       <div>
-        <h2 id="feat">Featured Projects</h2>
-        <p>A brief selection of projects including code, videos and technical notes. See more on my 
-          <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.
-        </p>
+        <h2 id="feat" data-i18n="feat_title">Featured Projects</h2>
+        <p data-i18n="feat_text">A brief selection of projects including code, videos and technical notes. See more on my <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.</p>
         <p>
-          <a class="btn" href="assets/CV_Joan.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <a class="btn" href="assets/CV_Joan.pdf" target="_blank" rel="noopener" data-i18n="btn_cv">Download CV (PDF)</a>
         </p>
       </div>
 
@@ -100,65 +106,56 @@
     <section>
       <div class="grid">
         <article class="card">
-          <h3>Vision-based Manipulation (ROS2 + OpenCV)</h3>
-          <p>Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.</p>
+          <h3 data-i18n="p1_title">Vision-based Manipulation (ROS2 + OpenCV)</h3>
+          <p data-i18n="p1_text">Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.</p>
           <div class="meta"><span>ROS2</span><span>OpenCV</span><span>Python</span><span>ABB</span></div>
-          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a> · <a href="#" aria-disabled="true" title="Video coming soon">Video</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a> · <a href="#" aria-disabled="true" title="Video coming soon" data-i18n="video">Video</a></p>
         </article>
 
         <article class="card">
-          <h3>PLC + SCADA for Assembly Cell</h3>
-          <p>Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.</p>
+          <h3 data-i18n="p2_title">PLC + SCADA for Assembly Cell</h3>
+          <p data-i18n="p2_text">Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.</p>
           <div class="meta"><span>TIA Portal</span><span>WinCC</span><span>IEC 61131-3</span></div>
-          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a></p>
         </article>
 
         <article class="card">
-          <h3>Mobile Robot Localization (EKF + LiDAR)</h3>
-          <p>Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.</p>
+          <h3 data-i18n="p3_title">Mobile Robot Localization (EKF + LiDAR)</h3>
+          <p data-i18n="p3_text">Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.</p>
           <div class="meta"><span>C++</span><span>EKF</span><span>LiDAR</span></div>
-          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener">Repository</a></p>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a></p>
         </article>
       </div>
     </section>
 
     <section>
-      <h2>Contact</h2>
+      <h2 data-i18n="contact">Contact</h2>
       <p>
         <strong>Email:</strong> <a href="mailto:joaneet27@gmail.com">joaneet27@gmail.com</a> ·
         <strong>GitHub:</strong> <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">@joanet27-root</a> ·
         <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joan-carrillo-82250b268/" target="_blank" rel="noopener">/in/joan-carrillo</a>
       </p>
-      <p>© <span id="y"></span> Joan Carrillo. Built with GitHub Pages.</p>
+      <p><span data-i18n="copyright_prefix">©</span> <span id="y"></span> Joan Carrillo. <span data-i18n="built">Built with GitHub Pages.</span></p>
     </section>
 
-    <footer>Tip: each repository should include a README with images, requirements, and usage steps.</footer>
+    <footer data-i18n="tip">Tip: each repository should include a README with images, requirements, and usage steps.</footer>
   </div>
 
   <script>
     // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // --- Simple Image Carousel with autoplay, dots, keyboard & swipe ---
-    const images = [
-      "assets/robots1.jpeg",
-      "assets/robots2.jpeg",
-      "assets/robots3.jpeg",
-      "assets/robots4.jpeg"
-    ];
-
-    // Preload
+    // --- Carousel with autoplay, dots, keyboard & swipe ---
+    const images = ["assets/robots1.jpeg","assets/robots2.jpeg","assets/robots3.jpeg"];
     images.slice(1).forEach(src => { const i = new Image(); i.src = src; });
 
     const img = document.getElementById("carousel-image");
     const nextBtn = document.querySelector(".next");
     const prevBtn = document.querySelector(".prev");
     const dotsWrap = document.querySelector(".dots");
-    let index = 0;
-    let autoplay = true;
-    let timer = null;
+    let index = 0, timer = null, autoplay = true;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Create dots
     images.forEach((_, i) => {
       const d = document.createElement("button");
       d.className = "dot" + (i===0 ? " active" : "");
@@ -166,58 +163,100 @@
       d.addEventListener("click", () => goTo(i));
       dotsWrap.appendChild(d);
     });
-
-    function updateDots() {
-      [...dotsWrap.children].forEach((d, i) => {
-        d.classList.toggle("active", i === index);
-      });
-    }
-
-    function goTo(i) {
-      index = (i + images.length) % images.length;
-      img.style.opacity = 0.25;
-      // small fade
-      setTimeout(() => { img.src = images[index]; img.alt = "Industrial robotics photo " + (index+1); img.style.opacity = 1; }, 120);
-      updateDots();
-      restart();
-    }
-
-    function next() { goTo(index + 1); }
-    function prev() { goTo(index - 1); }
-
-    nextBtn.addEventListener("click", next);
-    prevBtn.addEventListener("click", prev);
-
-    // Keyboard arrows
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    });
-
-    // Autoplay (respect reduced motion)
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    function start() {
-      if (!autoplay || prefersReduced) return;
-      timer = setInterval(next, 5000);
-    }
-    function stop() { if (timer) clearInterval(timer); }
-    function restart() { stop(); start(); }
-
+    const updateDots = () => ([...dotsWrap.children]).forEach((d,i)=>d.classList.toggle("active", i===index));
+    const goTo = (i) => { index=(i+images.length)%images.length; img.style.opacity=.25; setTimeout(()=>{ img.src=images[index]; img.alt="Industrial robotics photo "+(index+1); img.style.opacity=1; },120); updateDots(); restart(); };
+    const next = ()=>goTo(index+1), prev = ()=>goTo(index-1);
+    nextBtn.addEventListener("click", next); prevBtn.addEventListener("click", prev);
+    document.addEventListener("keydown", (e)=>{ if(e.key==="ArrowRight") next(); if(e.key==="ArrowLeft") prev();});
+    const start=()=>{ if(!autoplay||prefersReduced) return; timer=setInterval(next,5000);};
+    const stop =()=>{ if(timer) clearInterval(timer);};
+    const restart=()=>{ stop(); start();};
     const carousel = document.querySelector(".carousel");
-    carousel.addEventListener("mouseenter", () => { autoplay = false; stop(); });
-    carousel.addEventListener("mouseleave", () => { autoplay = true; start(); });
-
-    // Touch swipe
-    let startX = null;
-    carousel.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, {passive:true});
-    carousel.addEventListener("touchend", (e) => {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) (dx < 0 ? next() : prev());
-      startX = null;
-    });
-
+    carousel.addEventListener("mouseenter", ()=>{autoplay=false; stop();});
+    carousel.addEventListener("mouseleave", ()=>{autoplay=true; start();});
+    let startX=null; carousel.addEventListener("touchstart",(e)=>{startX=e.touches[0].clientX;},{passive:true});
+    carousel.addEventListener("touchend",(e)=>{ if(startX===null) return; const dx=e.changedTouches[0].clientX-startX; if(Math.abs(dx)>40) (dx<0?next():prev()); startX=null;});
     start();
+
+    // --- i18n (EN/ES) ---
+    const $ = s => document.querySelector(s);
+    const i18n = {
+      en: {
+        header_title: "Joan Carrillo — Industrial Computer Engineering & Robotics",
+        header_sub: "Focused on control systems, computer vision and automation. Looking for junior roles in Europe (robotics / controls / software).",
+        chip_cv: "Computer Vision",
+        feat_title: "Featured Projects",
+        feat_text: 'A brief selection of projects including code, videos and technical notes. See more on my <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.',
+        btn_cv: "Download CV (PDF)",
+        p1_title: "Vision-based Manipulation (ROS2 + OpenCV)",
+        p1_text: "Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.",
+        p2_title: "PLC + SCADA for Assembly Cell",
+        p2_text: "Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.",
+        p3_title: "Mobile Robot Localization (EKF + LiDAR)",
+        p3_text: "Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.",
+        repo: "Repository",
+        video: "Video",
+        contact: "Contact",
+        built: "Built with GitHub Pages.",
+        tip: "Tip: each repository should include a README with images, requirements, and usage steps.",
+        copyright_prefix: "©"
+      },
+      es: {
+        header_title: "Joan Carrillo — Ingeniería Informática Industrial y Robótica",
+        header_sub: "Enfocado en sistemas de control, visión por computador y automatización. Busco posiciones junior en Europa (robótica / control / software).",
+        chip_cv: "Visión por Computador",
+        feat_title: "Proyectos destacados",
+        feat_text: 'Una selección de proyectos con código, vídeos y notas técnicas. Mira más en mi <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.',
+        btn_cv: "Descargar CV (PDF)",
+        p1_title: "Manipulación con visión (ROS2 + OpenCV)",
+        p1_text: "Detección y estimación de pose con OpenCV. Pick & place con brazo ABB controlado con nodos ROS2 en Python.",
+        p2_title: "PLC + SCADA para célula de ensamblaje",
+        p2_text: "Control secuencial, interlocks y HMI. Simulado en Factory I/O con documentación eléctrica y gestión de fallos.",
+        p3_title: "Localización de robot móvil (EKF + LiDAR)",
+        p3_text: "Fusión de sensores en robot diferencial usando EKF y SLAM Toolbox para mapeo y navegación.",
+        repo: "Repositorio",
+        video: "Vídeo",
+        contact: "Contacto",
+        built: "Hecho con GitHub Pages.",
+        tip: "Consejo: cada repositorio debería incluir un README con imágenes, requisitos y pasos de uso.",
+        copyright_prefix: "©"
+      }
+    };
+
+    const nodes = [...document.querySelectorAll("[data-i18n]")];
+    const applyLang = (lang) => {
+      const dict = i18n[lang] || i18n.en;
+      nodes.forEach(n => {
+        const key = n.getAttribute("data-i18n");
+        if (!dict[key]) return;
+        // Usa textContent salvo que el valor incluya HTML (links)
+        if (dict[key].includes("<")) n.innerHTML = dict[key];
+        else n.textContent = dict[key];
+      });
+      // Update pressed state + <html lang="">
+      document.documentElement.setAttribute("lang", lang);
+      document.querySelectorAll(".lang-switch button").forEach(b => {
+        b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+      });
+      // Update OG title/description for share (best effort)
+      $('meta[property="og:title"]').setAttribute("content", dict.header_title);
+      $('meta[property="og:description"]').setAttribute("content",
+        lang === "es" ? "Robótica, automatización y proyectos de software." :
+                        "Robotics, automation, and software engineering projects."
+      );
+      localStorage.setItem("lang", lang);
+    };
+
+    // Init language: saved -> browser -> en
+    const saved = localStorage.getItem("lang");
+    const guess = navigator.language?.startsWith("es") ? "es" : "en";
+    const initial = saved || guess;
+    applyLang(initial);
+
+    // Switch handlers
+    document.querySelectorAll(".lang-switch button").forEach(btn=>{
+      btn.addEventListener("click", ()=> applyLang(btn.dataset.lang));
+    });
   </script>
 </body>
 </html>
