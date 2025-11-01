@@ -29,10 +29,45 @@
     footer{margin:32px 0;color:var(--muted);font-size:14px}
     .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:0 8px 18px var(--shadow)}
 
-    /* Language switcher */
-    .lang-switch{position:absolute;right:0;top:8px;display:flex;gap:8px}
-    .lang-switch button{width:32px;height:32px;border-radius:50%;border:1px solid var(--bd);background:#0f1524;cursor:pointer;font-size:18px;line-height:1}
-    .lang-switch button[aria-pressed="true"]{outline:2px solid var(--acc);outline-offset:2px}
+   /* Language switcher */
+.lang-switch {
+  position: absolute;
+  top: 12px;          /* un poco más arriba */
+  right: -40px;       /* desplaza a la derecha para no colisionar con el título */
+  display: flex;
+  gap: 8px;
+}
+
+.lang-switch button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--bd);
+  background: #0f1524;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, outline 0.15s ease;
+}
+
+.lang-switch button img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.lang-switch button:hover {
+  transform: scale(1.08);
+}
+
+.lang-switch button[aria-pressed="true"] {
+  outline: 2px solid var(--acc);
+  outline-offset: 2px;
+}
+
 
     /* Hero with carousel */
     .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:24px 0;background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
@@ -79,9 +114,14 @@
 
       <!-- Language Switcher -->
       <div class="lang-switch" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true" title="English">🇬🇧</button>
-        <button type="button" data-lang="es" aria-pressed="false" title="Español">🇪🇸</button>
+        <button type="button" data-lang="en" aria-pressed="true" title="English">
+          <img src="assets/flag-en.png" alt="English flag" />
+        </button>
+        <button type="button" data-lang="es" aria-pressed="false" title="Español">
+          <img src="assets/flag-es.png" alt="Spanish flag" />
+        </button>
       </div>
+
     </header>
 
     <section class="hero" aria-labelledby="feat">
