@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<link rel="stylesheet" href="styles/bg-animation.css">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -70,29 +72,107 @@
 
 
     /* Hero with carousel */
-    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;align-items:center;margin:24px 0;background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);border:1px solid var(--bd);border-radius:16px;padding:18px}
-    .hero h2{margin:0 0 6px}
+.hero{
+  display:grid;
+  grid-template-columns:1.15fr 1fr;
+  gap:20px;
+  align-items:center;
+  margin:24px 0;
+  background:linear-gradient(180deg,rgba(79,179,255,.10),transparent);
+  border:1px solid var(--bd);
+  border-radius:16px;
+  padding:18px;
+}
+.hero h2{margin:0 0 8px}
 
-    .carousel{position:relative;width:100%;height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--bd);background:#0e1422}
-    .carousel img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .35s ease}
-    .nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.4);border:none;color:#fff;font-size:26px;cursor:pointer;padding:6px 10px;border-radius:50%;line-height:1}
-    .nav:hover{background:rgba(0,0,0,.65)}
-    .prev{left:8px} .next{right:8px}
-    .dots{position:absolute;left:0;right:0;bottom:8px;display:flex;gap:6px;justify-content:center}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);border:1px solid rgba(0,0,0,.25);cursor:pointer}
-    .dot.active{background:#fff}
+/* Carousel */
+.carousel{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;         /* mantiene proporción y evita saltos */
+  max-height:260px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--bd);
+  background:#0e1422;
+}
+.carousel img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:opacity .35s ease;
+}
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.45);
+  border:none;
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+  padding:8px 10px;
+  border-radius:999px;
+  line-height:1;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.nav:hover{background:rgba(0,0,0,.65)}
+.prev{left:10px}
+.next{right:10px}
 
-    /* Cards grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:18px}
-    .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;transition:transform .15s ease, border-color .15s ease}
-    .card:hover{transform:translateY(-3px);border-color:var(--acc)}
-    .card h3{margin:0 0 6px;font-size:18px}
-    .card p{margin:8px 0 12px;color:var(--muted)}
-    .meta{display:flex;gap:8px;flex-wrap:wrap}
-    .meta span{font-size:12px;background:#0e1422;border:1px solid var(--bd);padding:4px 8px;border-radius:8px;color:var(--muted)}
+.dots{
+  position:absolute;
+  left:0; right:0; bottom:10px;
+  display:flex; gap:6px; justify-content:center;
+}
+.dot{
+  width:8px; height:8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.35);
+  border:1px solid rgba(0,0,0,.25);
+  cursor:pointer;
+}
+.dot.active{background:#fff}
 
-    @media (max-width:800px){.hero{grid-template-columns:1fr}}
-    @media (max-width:600px){header{flex-direction:column;align-items:flex-start}.lang-switch{position:static;align-self:flex-end;margin-left:auto}}
+/* Cards grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:16px;
+  margin-top:18px;
+}
+.card{
+  background:rgba(18,22,34,.96);  /* un pelín translúcido para que respire el fondo */
+  border:1px solid var(--bd);
+  border-radius:16px;
+  padding:16px;
+  transition:transform .15s ease, border-color .15s ease;
+}
+.card:hover{transform:translateY(-3px); border-color:var(--acc)}
+.card h3{margin:0 0 6px; font-size:18px}
+.card p{margin:8px 0 12px; color:var(--muted)}
+.meta{display:flex; gap:8px; flex-wrap:wrap}
+.meta span{
+  font-size:12px;
+  background:#0e1422;
+  border:1px solid var(--bd);
+  padding:4px 8px;
+  border-radius:8px;
+  color:var(--muted);
+}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .carousel{max-height:240px}
+  .lang-switch{right:8px; top:8px} /* que no se salga en pantallas medianas */
+}
+@media (max-width:600px){
+  header{flex-direction:column; align-items:flex-start}
+  .lang-switch{position:static; align-self:flex-end; margin-left:auto}
+}
+
   </style>
 </head>
 <body>
@@ -300,7 +380,6 @@
     });
   </script>
   <!-- Fondo animado -->
-  <link rel="stylesheet" href="styles/bg-animation.css">
-  <script src="assets/bg-animation.js"></script>
+<script src="assets/bg-animation.js"></script>
 </body>
 </html>
