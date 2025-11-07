@@ -6,16 +6,16 @@
 /* 🔹 Vídeo de fondo a pantalla completa */
 #bg-video {
   position: fixed;
-  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  inset: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;      /* Rellena la pantalla */
-  object-position: center;/* Centrado */
-  z-index: -1;            /* Detrás de todo */
-  pointer-events: none;   /* Que no intercepte clics */
-  mix-blend-mode: screen; /* Aprovecha transparencia del vídeo */
-  opacity: 0.55;          /* Suavizado visual */
-  background: #0b0e14;    /* Color de respaldo si el vídeo no carga */
+  object-fit: contain;     /* 👈 Antes era cover */
+  object-position: center; /* Centrado en pantalla */
+  z-index: -1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  background: #0b0e14;     /* Relleno del espacio vacío */
 }
 
 /* 🔹 Contenido por encima del vídeo */
