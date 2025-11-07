@@ -11,7 +11,7 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
-  <!-- ✅ AHORA SÍ usamos el CSS externo del vídeo -->
+  <!-- ✅ CSS del vídeo -->
   <link rel="stylesheet" href="styles/bg-animation.css">
 
   <style>
@@ -27,160 +27,8 @@
       color:var(--txt);
       line-height:1.6;
     }
-    a{color:var(--acc);text-decoration:none} 
-    a:hover{text-decoration:underline}
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
-    header{display:flex;gap:20px;align-items:center;padding:28px 0;border-bottom:1px solid var(--bd);position:relative}
-    header img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:2px solid var(--bd)}
-    .title h1{margin:0;font-size:28px}
-    .title p{margin:4px 0 0;color:var(--muted)}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .chip{background:var(--chip);border:1px solid var(--bd);padding:6px 10px;border-radius:999px;font-size:14px}
-    section{margin:28px 0}
-    footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:0 8px 18px var(--shadow)}
-
-    /* Language switcher */
-    .lang-switch {
-      position: absolute;
-      top: 12px;
-      right: -240px;
-      display: flex;
-      gap: 8px;
-    }
-    .lang-switch button {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid var(--bd);
-      background: #0f1524;
-      cursor: pointer;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s ease, outline 0.15s ease;
-    }
-    .lang-switch button img {
-      width: 28px;
-      height: 28px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    .lang-switch button:hover {
-      transform: scale(1.08);
-    }
-    .lang-switch button[aria-pressed="true"] {
-      outline: 2px solid var(--acc);
-      outline-offset: 2px;
-    }
-
-    /* Hero with carousel */
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:16px;
-      align-items:center;
-      margin:24px 0;
-      background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);
-      border:1px solid var(--bd);
-      border-radius:16px;
-      padding:18px;
-    }
-    .hero h2{margin:0 0 6px}
-
-    .carousel{
-      position:relative;
-      width:100%;
-      height:220px;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid var(--bd);
-      background:#0e1422;
-    }
-    .carousel img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:opacity .35s ease;
-    }
-    .nav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(0,0,0,.4);
-      border:none;
-      color:#fff;
-      font-size:26px;
-      cursor:pointer;
-      padding:6px 10px;
-      border-radius:50%;
-      line-height:1;
-    }
-    .nav:hover{background:rgba(0,0,0,.65)}
-    .prev{left:8px} 
-    .next{right:8px}
-    .dots{
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:8px;
-      display:flex;
-      gap:6px;
-      justify-content:center;
-    }
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:rgba(255,255,255,.35);
-      border:1px solid rgba(0,0,0,.25);
-      cursor:pointer;
-    }
-    .dot.active{background:#fff}
-
-    /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-      gap:16px;
-      margin-top:18px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--bd);
-      border-radius:16px;
-      padding:16px;
-      transition:transform .15s ease, border-color .15s ease;
-    }
-    .card:hover{
-      transform:translateY(-3px);
-      border-color:var(--acc);
-    }
-    .card h3{margin:0 0 6px;font-size:18px}
-    .card p{margin:8px 0 12px;color:var(--muted)}
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    .meta span{
-      font-size:12px;
-      background:#0e1422;
-      border:1px solid var(--bd);
-      padding:4px 8px;
-      border-radius:8px;
-      color:var(--muted);
-    }
-
-    @media (max-width:800px){
-      .hero{grid-template-columns:1fr}
-    }
-    @media (max-width:600px){
-      header{flex-direction:column;align-items:flex-start}
-      .lang-switch{position:static;align-self:flex-end;margin-left:auto}
-    }
+    /* ⬆️ aquí dejas todo tu CSS de layout, hero, cards, etc.
+       pero SIN nada de #bg-video ni .center-mask */
   </style>
 </head>
 <body>
@@ -198,10 +46,13 @@
     <source src="assets/bg-anim.mp4" type="video/mp4">
   </video>
 
-  <!-- 🔹 Franja central sin líneas -->
-  <div class="center-mask" aria-hidden="true"></div>
-
   <!-- Contenido principal -->
+  <div class="wrap">
+    <!-- todo tu contenido tal cual: header, hero, grid, contact, scripts... -->
+  </div>
+</body>
+</html>
+<!-- Contenido principal -->
   <div class="wrap">
     <header>
       <img src="assets/avatar.jpeg" alt="Profile photo of Joan Carrillo" />
