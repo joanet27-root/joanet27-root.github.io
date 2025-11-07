@@ -363,28 +363,30 @@
   </script>
 
   <script>
-  // Escala dinámica del vídeo según el ancho de la pantalla
-  function ajustarVideo() {
-    const video = document.getElementById("bg-video");
-    const ancho = window.innerWidth;
+    function ajustarVideo() {
+      const video = document.getElementById("bg-video");
+      const w = window.innerWidth;
 
-    // Ajusta aquí los umbrales según tu caso
-    let escala = 1.0; // tamaño normal (pantallas grandes)
+      // Escala base
+      let scale = 1;
 
-    if (ancho < 1900) escala = 0.95;
-    if (ancho < 1600) escala = 0.90;
-    if (ancho < 1400) escala = 0.85;
-    if (ancho < 1200) escala = 0.80;
-    if (ancho < 1000) escala = 0.75;
+      // 🔹 Escala según ancho del viewport
+      if (w < 1900) scale = 0.95;
+      if (w < 1700) scale = 0.90;
+      if (w < 1500) scale = 0.85;
+      if (w < 1300) scale = 0.80;
+      if (w < 1100) scale = 0.75;
+      if (w < 900)  scale = 0.70;
 
-    // Aplica la escala
-    video.style.transform = `translate(-50%, -50%) scale(${escala})`;
-  }
+      // ✅ Aplica la escala sin perder el centrado
+      video.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
 
-  // Llama al cargar y al redimensionar
-  window.addEventListener("load", ajustarVideo);
-  window.addEventListener("resize", ajustarVideo);
+    // Ejecutar en carga y al redimensionar
+    window.addEventListener("load", ajustarVideo);
+    window.addEventListener("resize", ajustarVideo);
 </script>
+
 
 </body>
 </html>
