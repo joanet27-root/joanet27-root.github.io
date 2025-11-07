@@ -1,31 +1,25 @@
-/* 🔹 Vídeo de fondo a pantalla completa */
+/* 🔹 Vídeo de fondo a pantalla completa y centrado */
 #bg-video {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0; */
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  z-index: -1;
-  pointer-events: none;
-  mix-blend-mode: screen;
+  object-fit: cover;      /* rellena toda la pantalla */
+  object-position: center;/* centrado: importante para que no se “descuadre” */
+  z-index: -1;            /* por detrás del contenido */
+  pointer-events: none;   /* que no intercepte clicks */
+  mix-blend-mode: screen; /* se mezcla con el fondo, aprovecha transparencia */
   opacity: 0.55;
-  background: #0b0e14;
+  background: #0b0e14;    /* color base mientras carga el vídeo */
 }
 
-/* 🔹 Franja central eliminada */
-/*
-.center-mask {
-  ...
-}
-*/
-
-/* 🔹 Contenido por encima */
+/* 🔹 Todo el contenido va por encima del vídeo */
 body > :not(#bg-video) {
   position: relative;
   z-index: 1;
 }
 
+/* 🔹 Respeta “reducir movimiento” del sistema */
 @media (prefers-reduced-motion: reduce) {
   #bg-video {
     display: none;
