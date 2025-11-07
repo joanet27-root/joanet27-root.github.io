@@ -1,7 +1,3 @@
-/* ===============================
-   🔹 Fondo de vídeo adaptativo
-   =============================== */
-
 #bg-video {
   position: fixed;
   top: 50%;
@@ -9,11 +5,9 @@
   transform: translate(-50%, -50%) scale(1);
   transform-origin: center center;
 
-  /* 🖥 tamaño base sólido */
-  width: auto;
-  height: auto;
-  min-width: 100vw;
-  min-height: 100vh;
+  /* base natural */
+  width: 2560px;    /* tamaño nativo del vídeo */
+  height: 1080px;
 
   object-fit: contain;
   object-position: center center;
@@ -28,10 +22,4 @@
 body > :not(#bg-video) {
   position: relative;
   z-index: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #bg-video {
-    display: none;
-  }
 }
