@@ -1,23 +1,26 @@
-/* Vídeo de fondo (líneas blancas sobre negro) */
 #bg-video{
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;             /* debajo del contenido */
+  object-position: center center;  /* punto de partida */
+  z-index: 0;
   pointer-events: none;
-  mix-blend-mode: screen;  /* blanco se suma sobre el fondo oscuro */
-  opacity: .55;            /* ajusta intensidad del efecto */
+  mix-blend-mode: screen;
+  opacity: .55;
 }
 
-/* Asegura que todo tu contenido quede por encima del vídeo */
-body > *{
-  position: relative;
-  z-index: 1;
+/* En pantallas muy anchas, desplaza un pelín el vídeo */
+@media (min-width: 1400px){
+  #bg-video{
+    object-position: 52% center; /* prueba 52, 55, etc hasta que la línea no cruce el centro */
+  }
 }
 
-/* Respeta usuarios con “reducir movimiento” */
-@media (prefers-reduced-motion: reduce){
-  #bg-video{ display:none; }
+/* En pantallas más estrechas (tipo MacBook) puedes compensar un poco */
+@media (max-width: 1200px){
+  #bg-video{
+    object-position: 48% center;
+  }
 }
