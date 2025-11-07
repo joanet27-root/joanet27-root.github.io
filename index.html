@@ -362,31 +362,6 @@
     start();
   </script>
 
-  <script>
-    function ajustarVideo() {
-      const video = document.getElementById("bg-video");
-      const videoRatio = 2560 / 1080; // relación de aspecto del vídeo = 2.37037
-      const screenRatio = window.innerWidth / window.innerHeight;
-
-      // 🔹 Calcula si la pantalla es más estrecha o más ancha que el vídeo
-      let scale;
-      if (screenRatio > videoRatio) {
-        // Pantalla más ancha → ajustamos por alto
-        scale = window.innerHeight / 1080;
-      } else {
-        // Pantalla más estrecha → ajustamos por ancho
-        scale = window.innerWidth / 2560;
-      }
-
-      // 🔹 Aplica la escala manteniendo centrado
-      video.style.transform = `translate(-50%, -50%) scale(${scale})`;
-    }
-
-    window.addEventListener("load", ajustarVideo);
-    window.addEventListener("resize", ajustarVideo);
-</script>
-
-
 
 </body>
 </html>
