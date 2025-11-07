@@ -6,9 +6,36 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  z-index: -1;          /* siempre detrás del contenido */
+  z-index: -1;
   pointer-events: none;
   mix-blend-mode: screen;
   opacity: 0.55;
-  background: #0b0e14;  /* por si tarda en cargar */
+  background: #0b0e14;
+}
+
+/* 🔹 Franja central sin líneas */
+.center-mask {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;          /* 👉 ESTE número es el que puedes cambiar */
+  height: 100vh;
+  background: #0b0e14;    /* mismo color que el body */
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 🔹 Contenido por encima */
+body > :not(#bg-video) {
+  position: relative;
+  z-index: 1;
+}
+
+/* 🔹 Respeta “reducir movimiento” */
+@media (prefers-reduced-motion: reduce) {
+  #bg-video,
+  .center-mask {
+    display: none;
+  }
 }
