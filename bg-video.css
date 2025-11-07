@@ -1,21 +1,26 @@
-#bg-video {
+/* 🔹 Contenedor del vídeo */
+.video-bg {
   position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #0b0e14;
+}
+
+/* 🔹 El propio vídeo */
+.video-bg video {
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
+  width: 100vw;
+  height: calc(100vw * (1080 / 2560)); /* 21:9 = 0.4218 proporción exacta */
+  min-height: 100vh;
+  min-width: calc(100vh * (2560 / 1080)); /* asegura cobertura completa */
 
-  /* 🔹 Muestra todo el vídeo sin recortar */
   object-fit: contain;
   object-position: center;
-
-  /* 🎨 Estilo */
-  z-index: -1;
-  pointer-events: none;
   mix-blend-mode: screen;
   opacity: 0.55;
-  background-color: #0b0e14;
 }
