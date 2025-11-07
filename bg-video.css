@@ -1,36 +1,38 @@
-/* 🔹 Vídeo de fondo siempre visible y centrado */
+/* ===============================
+   🔹 Vídeo de fondo adaptativo (PC)
+   =============================== */
+
 #bg-video {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centra el vídeo en la pantalla */
 
-  /* 🔹 El truco: combina cover y contain con media queries */
-  object-fit: cover;              /* Por defecto, rellena pantalla */
+  /* 🖥 Escalado dinámico */
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+
+  /* 🔹 Que el vídeo se vea siempre completo */
+  object-fit: contain;
   object-position: center center;
+
+  /* 🎨 Apariencia */
   z-index: -1;
   pointer-events: none;
   mix-blend-mode: screen;
   opacity: 0.55;
-  background-color: #0b0e14;
+  background-color: #0b0e14; /* color de fondo detrás del vídeo */
 }
 
-/* 🔹 En pantallas pequeñas o verticales, cambia a contain */
-@media (max-aspect-ratio: 16/9) {
-  #bg-video {
-    object-fit: contain;          /* Mantiene todo el vídeo visible */
-    background-color: #0b0e14;    /* Fondo detrás del vídeo */
-  }
-}
-
-/* 🔹 Contenido por encima */
+/* 🔹 Contenido siempre encima del vídeo */
 body > :not(#bg-video) {
   position: relative;
   z-index: 1;
 }
 
-/* 🔹 Respeta “reducir movimiento” */
+/* 🔹 Si alguien tiene "reducir movimiento" activado */
 @media (prefers-reduced-motion: reduce) {
   #bg-video {
     display: none;
