@@ -11,34 +11,69 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
-  <!-- ✅ AHORA SÍ usamos el CSS externo del vídeo -->
-  <link rel="stylesheet" href="styles/bg-animation.css">
+  <link rel="stylesheet" href="bg-video.css">
 
   <style>
-    :root{
+    :root {
       --bg:#0b0e14; --card:#121622; --txt:#e6e6e6; --muted:#a8b0c0; --acc:#4fb3ff;
       --chip:#1b2030; --bd:#1e2433; --shadow:rgba(0,0,0,.25);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      background:var(--bg);
-      color:var(--txt);
-      line-height:1.6;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--txt);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    a{color:var(--acc);text-decoration:none} 
-    a:hover{text-decoration:underline}
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
-    header{display:flex;gap:20px;align-items:center;padding:28px 0;border-bottom:1px solid var(--bd);position:relative}
-    header img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:2px solid var(--bd)}
-    .title h1{margin:0;font-size:28px}
-    .title p{margin:4px 0 0;color:var(--muted)}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
-    .chip{background:var(--chip);border:1px solid var(--bd);padding:6px 10px;border-radius:999px;font-size:14px}
-    section{margin:28px 0}
-    footer{margin:32px 0;color:var(--muted);font-size:14px}
-    .btn{display:inline-block;background:var(--acc);color:#09101a;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:0 8px 18px var(--shadow)}
+
+    a { color: var(--acc); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+
+    header {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--bd);
+      position: relative;
+    }
+
+    header img {
+      width: 92px;
+      height: 92px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--bd);
+    }
+
+    .title h1 { margin: 0; font-size: 28px; }
+    .title p { margin: 4px 0 0; color: var(--muted); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--bd);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+
+    section { margin: 28px 0; }
+    footer { margin: 32px 0; color: var(--muted); font-size: 14px; }
+
+    .btn {
+      display: inline-block;
+      background: var(--acc);
+      color: #09101a;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 8px 18px var(--shadow);
+    }
 
     /* Language switcher */
     .lang-switch {
@@ -67,141 +102,147 @@
       object-fit: cover;
       border-radius: 50%;
     }
-    .lang-switch button:hover {
-      transform: scale(1.08);
-    }
+    .lang-switch button:hover { transform: scale(1.08); }
     .lang-switch button[aria-pressed="true"] {
       outline: 2px solid var(--acc);
       outline-offset: 2px;
     }
 
-    /* Hero with carousel */
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:16px;
-      align-items:center;
-      margin:24px 0;
-      background:linear-gradient(180deg,rgba(79,179,255,.12),transparent);
-      border:1px solid var(--bd);
-      border-radius:16px;
-      padding:18px;
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      align-items: center;
+      margin: 24px 0;
+      background: linear-gradient(180deg, rgba(79,179,255,.12), transparent);
+      border: 1px solid var(--bd);
+      border-radius: 16px;
+      padding: 18px;
     }
-    .hero h2{margin:0 0 6px}
+    .hero h2 { margin: 0 0 6px; }
 
-    .carousel{
-      position:relative;
-      width:100%;
-      height:220px;
-      border-radius:12px;
-      overflow:hidden;
-      border:1px solid var(--bd);
-      background:#0e1422;
+    /* Carousel */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--bd);
+      background: #0e1422;
     }
-    .carousel img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transition:opacity .35s ease;
+    .carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity .35s ease;
     }
-    .nav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(0,0,0,.4);
-      border:none;
-      color:#fff;
-      font-size:26px;
-      cursor:pointer;
-      padding:6px 10px;
-      border-radius:50%;
-      line-height:1;
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,.4);
+      border: none;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 50%;
+      line-height: 1;
     }
-    .nav:hover{background:rgba(0,0,0,.65)}
-    .prev{left:8px} 
-    .next{right:8px}
-    .dots{
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:8px;
-      display:flex;
-      gap:6px;
-      justify-content:center;
+    .nav:hover { background: rgba(0,0,0,.65); }
+    .prev { left: 8px; }
+    .next { right: 8px; }
+    .dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      display: flex;
+      gap: 6px;
+      justify-content: center;
     }
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:rgba(255,255,255,.35);
-      border:1px solid rgba(0,0,0,.25);
-      cursor:pointer;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(0,0,0,.25);
+      cursor: pointer;
     }
-    .dot.active{background:#fff}
+    .dot.active { background: #fff; }
 
     /* Cards grid */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-      gap:16px;
-      margin-top:18px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
     }
-    .card{
-      background:var(--card);
-      border:1px solid var(--bd);
-      border-radius:16px;
-      padding:16px;
-      transition:transform .15s ease, border-color .15s ease;
+    .card {
+      background: var(--card);
+      border: 1px solid var(--bd);
+      border-radius: 16px;
+      padding: 16px;
+      transition: transform .15s ease, border-color .15s ease;
     }
-    .card:hover{
-      transform:translateY(-3px);
-      border-color:var(--acc);
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--acc);
     }
-    .card h3{margin:0 0 6px;font-size:18px}
-    .card p{margin:8px 0 12px;color:var(--muted)}
-    .meta{
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    .meta span{
-      font-size:12px;
-      background:#0e1422;
-      border:1px solid var(--bd);
-      padding:4px 8px;
-      border-radius:8px;
-      color:var(--muted);
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 8px 0 12px; color: var(--muted); }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .meta span {
+      font-size: 12px;
+      background: #0e1422;
+      border: 1px solid var(--bd);
+      padding: 4px 8px;
+      border-radius: 8px;
+      color: var(--muted);
     }
 
-    @media (max-width:800px){
-      .hero{grid-template-columns:1fr}
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; }
     }
-    @media (max-width:600px){
-      header{flex-direction:column;align-items:flex-start}
-      .lang-switch{position:static;align-self:flex-end;margin-left:auto}
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .lang-switch { position: static; align-self: flex-end; margin-left: auto; }
+    }
+
+    /* 🔹 Video de fondo a pantalla completa */
+    #bg-video {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      object-position: center;
+      z-index: -1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      background: #0b0e14;
+    }
+    body > :not(#bg-video) {
+      position: relative;
+      z-index: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #bg-video { display: none; }
     }
   </style>
 </head>
+
 <body>
   <!-- 🔹 Vídeo de fondo -->
-  <video
-    id="bg-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    aria-hidden="true"
-    tabindex="-1"
-  >
+  <video id="bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
     <source src="assets/bg-anim.mp4" type="video/mp4">
   </video>
 
-  <!-- 🔹 Franja central sin líneas -->
-  <div class="center-mask" aria-hidden="true"></div>
-
-  <!-- Contenido principal -->
+  <!-- 🔹 Contenido principal -->
   <div class="wrap">
     <header>
       <img src="assets/avatar.jpeg" alt="Profile photo of Joan Carrillo" />
@@ -219,7 +260,6 @@
         </div>
       </div>
 
-      <!-- Language Switcher -->
       <div class="lang-switch" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true" title="English">
           <img src="assets/flag-en.png" alt="English flag" />
@@ -242,13 +282,11 @@
         </p>
       </div>
 
-      <!-- Carousel -->
       <div class="carousel" role="region" aria-label="Robotics gallery">
         <button class="nav prev" aria-label="Previous image" type="button">❮</button>
         <img id="carousel-image" src="assets/robots1.jpeg" alt="Industrial robotics photo 1" loading="eager" />
         <div class="dots" aria-hidden="true"></div>
         <button class="nav next" aria-label="Next image" type="button">❯</button>
-        <noscript><img src="assets/robots1.jpeg" alt="Industrial robotics" /></noscript>
       </div>
     </section>
 
@@ -291,20 +329,13 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // --- Carousel with autoplay, dots, keyboard & swipe ---
     const images = ["assets/robots1.jpeg","assets/robots2.jpeg","assets/robots3.jpeg"];
-    images.slice(1).forEach(src => { const i = new Image(); i.src = src; });
-
     const img = document.getElementById("carousel-image");
     const nextBtn = document.querySelector(".next");
     const prevBtn = document.querySelector(".prev");
     const dotsWrap = document.querySelector(".dots");
-    let index = 0, timer = null, autoplay = true;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+    let index = 0, timer = null;
     images.forEach((_, i) => {
       const d = document.createElement("button");
       d.className = "dot" + (i===0 ? " active" : "");
@@ -314,120 +345,21 @@
     });
     const updateDots = () => ([...dotsWrap.children]).forEach((d,i)=>d.classList.toggle("active", i===index));
     const goTo = (i) => {
-      index=(i+images.length)%images.length;
-      img.style.opacity=.25;
-      setTimeout(()=>{
-        img.src=images[index];
-        img.alt="Industrial robotics photo "+(index+1);
-        img.style.opacity=1;
-      },120);
-      updateDots();
-      restart();
+      index = (i+images.length)%images.length;
+      img.style.opacity = .25;
+      setTimeout(()=>{ img.src = images[index]; img.style.opacity = 1; }, 120);
+      updateDots(); restart();
     };
     const next = ()=>goTo(index+1), prev = ()=>goTo(index-1);
     nextBtn.addEventListener("click", next); 
     prevBtn.addEventListener("click", prev);
-    document.addEventListener("keydown", (e)=>{
-      if(e.key==="ArrowRight") next();
-      if(e.key==="ArrowLeft") prev();
-    });
-    const start=()=>{
-      if(!autoplay||prefersReduced) return;
-      timer=setInterval(next,5000);
-    };
-    const stop =()=>{
-      if(timer) clearInterval(timer);
-    };
-    const restart=()=>{ stop(); start();};
+    const start=()=>{ timer=setInterval(next,5000); };
+    const stop =()=>{ if(timer) clearInterval(timer); };
+    const restart=()=>{ stop(); start(); };
     const carousel = document.querySelector(".carousel");
-    carousel.addEventListener("mouseenter", ()=>{autoplay=false; stop();});
-    carousel.addEventListener("mouseleave", ()=>{autoplay=true; start();});
-    let startX=null; 
-    carousel.addEventListener("touchstart",(e)=>{
-      startX=e.touches[0].clientX;
-    },{passive:true});
-    carousel.addEventListener("touchend",(e)=>{
-      if(startX===null) return;
-      const dx=e.changedTouches[0].clientX-startX;
-      if(Math.abs(dx)>40) (dx<0?next():prev());
-      startX=null;
-    });
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
     start();
-
-    // --- i18n (EN/ES) ---
-    const $ = s => document.querySelector(s);
-    const i18n = {
-      en: {
-        header_title: "Joan Carrillo — Industrial Computer Engineering & Robotics",
-        header_sub: "Focused on control systems, robotics, machine learning, and computer vision. Looking for junior positions in Europe.",
-        chip_cv: "Computer Vision",
-        feat_title: "Featured Projects",
-        feat_text: 'A brief selection of projects including code, videos and technical notes. See more on my <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.',
-        btn_cv: "Download CV (PDF)",
-        p1_title: "Vision-based Manipulation (ROS2 + OpenCV)",
-        p1_text: "Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.",
-        p2_title: "PLC + SCADA for Assembly Cell",
-        p2_text: "Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.",
-        p3_title: "Mobile Robot Localization (EKF + LiDAR)",
-        p3_text: "Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.",
-        repo: "Repository",
-        video: "Video",
-        contact: "Contact",
-        built: "Built with GitHub Pages.",
-        tip: "Tip: each repository should include a README with images, requirements, and usage steps.",
-        copyright_prefix: "©"
-      },
-      es: {
-        header_title: "Joan Carrillo — Ingeniería Informática Industrial y Robótica",
-        header_sub: "Enfocado en sistemas de control, robótica, aprendizaje automático y visión por computador. Busco posiciones junior en Europa.",
-        chip_cv: "Visión por Computador",
-        feat_title: "Proyectos destacados",
-        feat_text: 'Una selección de proyectos con código, vídeos y notas técnicas. Mira más en mi <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.',
-        btn_cv: "Descargar CV (PDF)",
-        p1_title: "Manipulación con visión (ROS2 + OpenCV)",
-        p1_text: "Detección y estimación de pose con OpenCV. Pick & place con brazo ABB controlado con nodos ROS2 en Python.",
-        p2_title: "PLC + SCADA para célula de ensamblaje",
-        p2_text: "Control secuencial, interlocks y HMI. Simulado en Factory I/O con documentación eléctrica y gestión de fallos.",
-        p3_title: "Localización de robot móvil (EKF + LiDAR)",
-        p3_text: "Fusión de sensores en robot diferencial usando EKF y SLAM Toolbox para mapeo y navegación.",
-        repo: "Repositorio",
-        video: "Vídeo",
-        contact: "Contacto",
-        built: "Hecho con GitHub Pages.",
-        tip: "Consejo: cada repositorio debería incluir un README con imágenes, requisitos y pasos de uso.",
-        copyright_prefix: "©"
-      }
-    };
-
-    const nodes = [...document.querySelectorAll("[data-i18n]")];
-    const applyLang = (lang) => {
-      const dict = i18n[lang] || i18n.en;
-      nodes.forEach(n => {
-        const key = n.getAttribute("data-i18n");
-        if (!dict[key]) return;
-        if (dict[key].includes("<")) n.innerHTML = dict[key];
-        else n.textContent = dict[key];
-      });
-      document.documentElement.setAttribute("lang", lang);
-      document.querySelectorAll(".lang-switch button").forEach(b => {
-        b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
-      });
-      $('meta[property="og:title"]').setAttribute("content", dict.header_title);
-      $('meta[property="og:description"]').setAttribute("content",
-        lang === "es" ? "Robótica, automatización y proyectos de software." :
-                        "Robotics, automation, and software engineering projects."
-      );
-      localStorage.setItem("lang", lang);
-    };
-
-    const saved = localStorage.getItem("lang");
-    const guess = navigator.language?.startsWith("es") ? "es" : "en";
-    const initial = saved || guess;
-    applyLang(initial);
-
-    document.querySelectorAll(".lang-switch button").forEach(btn=>{
-      btn.addEventListener("click", ()=> applyLang(btn.dataset.lang));
-    });
   </script>
 </body>
 </html>
