@@ -11,7 +11,7 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
-  <!-- CSS del vídeo de fondo -->
+  <!-- ✅ AHORA SÍ usamos el CSS externo del vídeo -->
   <link rel="stylesheet" href="styles/bg-animation.css">
 
   <style>
@@ -48,7 +48,6 @@
       display: flex;
       gap: 8px;
     }
-
     .lang-switch button {
       width: 36px;
       height: 36px;
@@ -62,18 +61,15 @@
       justify-content: center;
       transition: transform 0.15s ease, outline 0.15s ease;
     }
-
     .lang-switch button img {
       width: 28px;
       height: 28px;
       object-fit: cover;
       border-radius: 50%;
     }
-
     .lang-switch button:hover {
       transform: scale(1.08);
     }
-
     .lang-switch button[aria-pressed="true"] {
       outline: 2px solid var(--acc);
       outline-offset: 2px;
@@ -188,8 +184,6 @@
   </style>
 </head>
 <body>
-
-<body>
   <!-- 🔹 Vídeo de fondo -->
   <video
     id="bg-video"
@@ -206,9 +200,6 @@
 
   <!-- 🔹 Franja central sin líneas -->
   <div class="center-mask" aria-hidden="true"></div>
-
-
-
 
   <!-- Contenido principal -->
   <div class="wrap">
