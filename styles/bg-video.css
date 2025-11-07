@@ -13,18 +13,12 @@
   background: #0b0e14;
 }
 
-/* 🔹 Franja central sin líneas */
+/* 🔹 Franja central eliminada */
+/*
 .center-mask {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1100px;          /* 👉 ESTE número es el que puedes cambiar */
-  height: 100vh;
-  background: #0b0e14;    /* mismo color que el body */
-  z-index: 0;
-  pointer-events: none;
+  ...
 }
+*/
 
 /* 🔹 Contenido por encima */
 body > :not(#bg-video) {
@@ -32,10 +26,8 @@ body > :not(#bg-video) {
   z-index: 1;
 }
 
-/* 🔹 Respeta “reducir movimiento” */
 @media (prefers-reduced-motion: reduce) {
-  #bg-video,
-  .center-mask {
+  #bg-video {
     display: none;
   }
 }
