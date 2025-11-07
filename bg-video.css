@@ -1,24 +1,18 @@
-/* ===============================
-   🔹 Vídeo de fondo adaptativo (PC)
-   =============================== */
-
 #bg-video {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Centrado absoluto */
+  transform: translate(-50%, -50%) scale(1); /* scale() lo controlaremos con JS */
+  transform-origin: center center;
 
-  /* 🖥 Tamaño flexible basado en proporción real */
   width: auto;
   height: auto;
   min-width: 100vw;
   min-height: 100vh;
 
-  /* 🔹 Siempre se ve entero */
   object-fit: contain;
   object-position: center center;
 
-  /* 🎨 Estética */
   z-index: -1;
   pointer-events: none;
   mix-blend-mode: screen;
@@ -26,15 +20,7 @@
   background-color: #0b0e14;
 }
 
-/* 🔹 Contenido por encima */
 body > :not(#bg-video) {
   position: relative;
   z-index: 1;
-}
-
-/* 🔹 Respeta “reducir movimiento” */
-@media (prefers-reduced-motion: reduce) {
-  #bg-video {
-    display: none;
-  }
 }

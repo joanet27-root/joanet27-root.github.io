@@ -361,5 +361,30 @@
     carousel.addEventListener("mouseleave", start);
     start();
   </script>
+
+  <script>
+  // Escala dinámica del vídeo según el ancho de la pantalla
+  function ajustarVideo() {
+    const video = document.getElementById("bg-video");
+    const ancho = window.innerWidth;
+
+    // Ajusta aquí los umbrales según tu caso
+    let escala = 1.0; // tamaño normal (pantallas grandes)
+
+    if (ancho < 1900) escala = 0.95;
+    if (ancho < 1600) escala = 0.90;
+    if (ancho < 1400) escala = 0.85;
+    if (ancho < 1200) escala = 0.80;
+    if (ancho < 1000) escala = 0.75;
+
+    // Aplica la escala
+    video.style.transform = `translate(-50%, -50%) scale(${escala})`;
+  }
+
+  // Llama al cargar y al redimensionar
+  window.addEventListener("load", ajustarVideo);
+  window.addEventListener("resize", ajustarVideo);
+</script>
+
 </body>
 </html>
