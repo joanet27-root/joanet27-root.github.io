@@ -11,7 +11,8 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
-  <link rel="stylesheet" href="bg-video.css">
+  <!-- ❌ IMPORTANTE: quitamos el CSS externo del vídeo para no tener conflictos -->
+  <!-- <link rel="stylesheet" href="bg-video.css"> -->
 
   <style>
     :root {
@@ -212,24 +213,26 @@
       .lang-switch { position: static; align-self: flex-end; margin-left: auto; }
     }
 
-    /* 🔹 Video de fondo a pantalla completa */
+    /* ✅ VÍDEO DE FONDO: SIEMPRE ENTERO, NUNCA RECORTADO, ESCALADO POR ANCHO */
     #bg-video {
       position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      object-position: center;
+      top: 0;
+      left: 0;
+      width: 100vw;    /* ocupa todo el ancho de la ventana */
+      height: auto;    /* la altura se calcula manteniendo proporción 2560x1080 */
       z-index: -1;
       pointer-events: none;
       mix-blend-mode: screen;
       opacity: 0.55;
-      background: #0b0e14;
+      background: #0b0e14; /* color de fondo en bandas arriba/abajo si las hubiera */
     }
+
+    /* El contenido siempre por encima del vídeo */
     body > :not(#bg-video) {
       position: relative;
       z-index: 1;
     }
+
     @media (prefers-reduced-motion: reduce) {
       #bg-video { display: none; }
     }
@@ -361,7 +364,5 @@
     carousel.addEventListener("mouseleave", start);
     start();
   </script>
-
-
 </body>
 </html>
