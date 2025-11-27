@@ -65,7 +65,7 @@ const translations = {
     contact: `Contact`,
     copyright_prefix: `©`,
     built: `Built with GitHub Pages.`,
-    tip: `Tip: each repository should include a README with images, requirements, and usage steps.`
+    tip: `Each repository includes a README file with images, requirements, and usage steps.`
   },
   es: {
     header_title: `Joan Carrillo — Ingeniería Informática Industrial y Robótica`,
@@ -85,7 +85,7 @@ const translations = {
     contact: `Contacto`,
     copyright_prefix: `©`,
     built: `Desarrollado con GitHub Pages.`,
-    tip: `Consejo: cada repositorio debería incluir un README con imágenes, requisitos y pasos de uso.`
+    tip: `Cada repositorio incluye un README con imágenes, requisitos y pasos de uso.`
   }
 };
 
