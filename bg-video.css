@@ -3,7 +3,7 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 100vh;          /* ALTURA FIJA */
+  height: 100vh;
   z-index: -1;
   pointer-events: none;
   display: flex;
@@ -11,23 +11,25 @@
   justify-content: center;
   background: #0b0e14;
 
-  /* 👇 Nuevo: empieza oculto y con transición */
+  /* Oculto de inicio */
   opacity: 0;
-  transition: opacity 0.6s ease;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 /* El ancho depende del aspecto */
 #bg-video {
   height: 100%;
-  width: auto;            /* 👈 SOLO ESCALA EN ANCHURA */
+  width: auto;
   object-fit: contain;
   opacity: 0.55;
   mix-blend-mode: screen;
 }
 
-/* 👇 Clase para mostrar la magia */
+/* Clase para mostrar la magia */
 .bg-container.is-visible {
   opacity: 1;
+  visibility: visible;
 }
 
 /* Contenido arriba */

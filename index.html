@@ -273,10 +273,11 @@
 <body>
 
   <div class="bg-container">
-   <video id="bg-video" autoplay muted loop playsinline preload="metadata">
-    <source src="assets/bg-anim.mp4" type="video/mp4">
+   <video id="bg-video" muted loop playsinline preload="none">
+    <source src="assets/bg-anim.mp4" type="video/mp4" />
    </video>
   </div>
+
 
 
 
@@ -415,16 +416,26 @@
     // 🎇 Toggle del vídeo de fondo
     const magicBtn = document.getElementById('magic-toggle');
     const bgContainer = document.querySelector('.bg-container');
+    const bgVideo = document.getElementById('bg-video');
 
-    if (magicBtn && bgContainer) {
+    if (magicBtn && bgContainer && bgVideo) {
       magicBtn.addEventListener('click', () => {
         const isVisible = bgContainer.classList.toggle('is-visible');
         magicBtn.setAttribute('aria-pressed', isVisible);
+        magicBtn.textContent = isVisible ? 'Magic ON ' : 'Click to Magic';
 
-        // Opcional: cambia el texto cuando esté activo
-        magicBtn.textContent = isVisible ? 'Magic ON ✨' : 'Click to Magic';
+        if (isVisible) {
+          // Empieza la magia
+          bgVideo.play().catch(() => {});
+        } else {
+          // La paramos y volvemos al inicio
+          bgVideo.pause();
+          bgVideo.currentTime = 0;
+        }
       });
     }
+
+
 
   </script>
 </body>
