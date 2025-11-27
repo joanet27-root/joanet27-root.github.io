@@ -4,30 +4,36 @@
   min-height: 100vh;
 }
 
-/* VIDEO LATERAL */
+/* LADOS */
 .side-video {
+  position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: #0b0e14;
 }
 
 .side-video video {
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
   width: auto;
+  transform: translateX(-50%);
   object-fit: contain;
   opacity: 0.55;
-  pointer-events: none;
   mix-blend-mode: screen;
+  pointer-events: none;
 }
 
-/* Contenido siempre arriba */
-.wrap {
-  position: relative;
-  z-index: 1;
+/* LADO DERECHO ES REFLEJO DEL IZQUIERDO */
+.side-video.mirror::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform: scaleX(-1);
 }
 
+/* MÓVIL */
 @media (max-width: 900px) {
   .layout {
     display: block;
@@ -37,4 +43,3 @@
     display: none;
   }
 }
-
