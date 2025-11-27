@@ -1,26 +1,40 @@
-/* 🔹 Contenedor del vídeo */
-.video-bg {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  z-index: -1;
-  pointer-events: none;
-  background-color: #0b0e14;
-}
-
-/* 🔹 El propio vídeo */
-.video-bg video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: calc(100vw * (1080 / 2560)); /* 21:9 = 0.4218 proporción exacta */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(900px, 980px) 1fr;
   min-height: 100vh;
-  min-width: calc(100vh * (2560 / 1080)); /* asegura cobertura completa */
-
-  object-fit: contain;
-  object-position: center;
-  mix-blend-mode: screen;
-  opacity: 1;
 }
+
+/* VIDEO LATERAL */
+.side-video {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b0e14;
+}
+
+.side-video video {
+  height: 100vh;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.55;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* Contenido siempre arriba */
+.wrap {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    display: block;
+  }
+
+  .side-video {
+    display: none;
+  }
+}
+

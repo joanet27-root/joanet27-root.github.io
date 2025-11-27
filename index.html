@@ -11,8 +11,8 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
-  <!-- ❌ IMPORTANTE: quitamos el CSS externo del vídeo para no tener conflictos -->
-  <!-- <link rel="stylesheet" href="bg-video.css"> -->
+
+<link rel="stylesheet" href="bg-video.css"> 
 
   <style>
     :root {
@@ -32,6 +32,7 @@
     a { color: var(--acc); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    
     .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
 
     header {
@@ -213,37 +214,20 @@
       .lang-switch { position: static; align-self: flex-end; margin-left: auto; }
     }
 
-    /* ✅ VÍDEO DE FONDO: SIEMPRE ENTERO, NUNCA RECORTADO, ESCALADO POR ANCHO */
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;    /* ocupa todo el ancho de la ventana */
-      height: auto;    /* la altura se calcula manteniendo proporción 2560x1080 */
-      z-index: -1;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      opacity: 0.55;
-      background: #0b0e14; /* color de fondo en bandas arriba/abajo si las hubiera */
-    }
-
-    /* El contenido siempre por encima del vídeo */
-    body > :not(#bg-video) {
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #bg-video { display: none; }
-    }
+  
   </style>
 </head>
 
 <body>
-  <!-- 🔹 Vídeo de fondo -->
-  <video id="bg-video" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1">
-    <source src="assets/bg-anim.mp4" type="video/mp4">
-  </video>
+
+  <div class="layout">
+
+  <div class="side-video left">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="assets/bg-anim.mp4" type="video/mp4">
+    </video>
+  </div>
+
 
   <!-- 🔹 Contenido principal -->
   <div class="wrap">
@@ -328,8 +312,16 @@
       <p><span data-i18n="copyright_prefix">©</span> <span id="y"></span> Joan Carrillo. <span data-i18n="built">Built with GitHub Pages.</span></p>
     </section>
 
-    <footer data-i18n="tip">Tip: each repository should include a README with images, requirements, and usage steps.</footer>
+        <footer data-i18n="tip">Tip: each repository should include a README with images, requirements, and usage steps.</footer>
+  </div> 
+
+  <div class="side-video right">
+    <video autoplay muted loop playsinline preload="metadata">
+      <source src="assets/bg-anim.mp4" type="video/mp4">
+    </video>
   </div>
+
+</div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
@@ -366,3 +358,4 @@
   </script>
 </body>
 </html>
+
