@@ -110,6 +110,58 @@
       outline-offset: 2px;
     }
 
+        /* Botón "Click to Magic" */
+    .lang-switch .magic-btn {
+      width: auto;
+      padding: 0 16px;
+      height: 36px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+
+      background: linear-gradient(135deg, #22c55e, #4ade80);
+      color: #02140a;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.25),
+        0 10px 25px rgba(16, 185, 129, 0.35);
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+    }
+
+    .lang-switch .magic-btn:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow:
+        0 0 0 1px rgba(34, 197, 94, 0.4),
+        0 14px 30px rgba(16, 185, 129, 0.5);
+    }
+
+    .lang-switch .magic-btn:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow:
+        0 0 0 1px rgba(22, 163, 74, 0.6),
+        0 6px 18px rgba(16, 185, 129, 0.45);
+    }
+
+    .lang-switch .magic-btn[aria-pressed="true"] {
+      box-shadow:
+        0 0 0 2px rgba(190, 242, 100, 0.9),
+        0 0 25px rgba(74, 222, 128, 0.85);
+      filter: brightness(1.1);
+    }
+
+
     /* Hero section */
     .hero {
       display: grid;
@@ -253,7 +305,19 @@
         <button type="button" data-lang="es" aria-pressed="false" title="Español">
           <img src="assets/flag-es.png" alt="Spanish flag" />
         </button>
+
+        <!-- 🌟 Botón de magia -->
+        <button
+          type="button"
+          id="magic-toggle"
+          class="magic-btn"
+          aria-pressed="false"
+          title="Activate background magic"
+        >
+          Click to Magic
+        </button>
       </div>
+
     </header>
 
     <section class="hero" aria-labelledby="feat">
@@ -347,6 +411,21 @@
     carousel.addEventListener("mouseenter", stop);
     carousel.addEventListener("mouseleave", start);
     start();
+    
+    // 🎇 Toggle del vídeo de fondo
+    const magicBtn = document.getElementById('magic-toggle');
+    const bgContainer = document.querySelector('.bg-container');
+
+    if (magicBtn && bgContainer) {
+      magicBtn.addEventListener('click', () => {
+        const isVisible = bgContainer.classList.toggle('is-visible');
+        magicBtn.setAttribute('aria-pressed', isVisible);
+
+        // Opcional: cambia el texto cuando esté activo
+        magicBtn.textContent = isVisible ? 'Magic ON ✨' : 'Click to Magic';
+      });
+    }
+
   </script>
 </body>
 </html>
