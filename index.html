@@ -273,11 +273,10 @@
 <body>
 
   <div class="bg-container">
-   <video id="bg-video" muted loop playsinline preload="none">
-    <source src="assets/bg-anim.mp4" type="video/mp4" />
+   <video id="bg-video" muted playsinline preload="none">
+     <source src="assets/bg-anim.mp4" type="video/mp4" />
    </video>
   </div>
-
 
 
 
@@ -413,29 +412,69 @@
     carousel.addEventListener("mouseleave", start);
     start();
     
-    // 🎇 Toggle del vídeo de fondo
+    // 🎇 Control del vídeo de fondo con duración fija
     const magicBtn = document.getElementById('magic-toggle');
     const bgContainer = document.querySelector('.bg-container');
     const bgVideo = document.getElementById('bg-video');
 
-    if (magicBtn && bgContainer && bgVideo) {
-      magicBtn.addEventListener('click', () => {
-        const isVisible = bgContainer.classList.toggle('is-visible');
-        magicBtn.setAttribute('aria-pressed', isVisible);
-        magicBtn.textContent = isVisible ? 'Magic ON ' : 'Click to Magic';
+    let magicTimeout = null;
 
-        if (isVisible) {
-          // Empieza la magia
-          bgVideo.play().catch(() => {});
-        } else {
-          // La paramos y volvemos al inicio
-          bgVideo.pause();
-          bgVideo.currentTime = 0;
-        }
-      });
+    // Apagar magia: ocultar, parar vídeo, resetear botón
+    function stopMagic() {
+      if (!bgContainer.classList.contains('is-visible')) return;
+
+      bgContainer.classList.remove('is-visible');
+      magicBtn.setAttribute('aria-pressed', 'false');
+      magicBtn.textContent = 'Click to Magic';
+
+      if (magicTimeout) {
+        clearTimeout(magicTimeout);
+        magicTimeout = null;
+      }
+
+      bgVideo.pause();
+      // Volvemos al inicio para que la próxima vez empiece desde 0
+      bgVideo.currentTime = 0;
     }
 
+    // Encender magia: mostrar, reproducir y programar apagado
+    function startMagic() {
+      bgContainer.classList.add('is-visible');
+      magicBtn.setAttribute('aria-pressed', 'true');
+      magicBtn.textContent = 'Magic ON ✨';
 
+      if (magicTimeout) {
+        clearTimeout(magicTimeout);
+        magicTimeout = null;
+      }
+
+      // Empezar siempre desde el principio
+      bgVideo.currentTime = 0;
+      bgVideo.play().catch(() => {});
+
+      // Apagar automáticamente a los 18 segundos
+      magicTimeout = setTimeout(() => {
+        stopMagic();
+      }, 18000);
+    }
+
+    if (magicBtn && bgContainer && bgVideo) {
+      // Click en el botón: toggle manual
+      magicBtn.addEventListener('click', () => {
+        if (bgContainer.classList.contains('is-visible')) {
+          // Si ya está encendido, lo apagamos antes de tiempo
+          stopMagic();
+        } else {
+          // Si está apagado, encendemos magia
+          startMagic();
+        }
+      });
+
+      // Por si acaso: cuando el vídeo llegue al final, apagamos magia
+      bgVideo.addEventListener('ended', () => {
+        stopMagic();
+      });
+    }
 
   </script>
 </body>
