@@ -11,18 +11,14 @@
   <meta property="og:image" content="https://joanet27-root.github.io/assets/robots1.jpeg" />
   <meta property="og:type" content="website" />
 
+
+<link rel="stylesheet" href="bg-video.css"> 
+
   <style>
     :root {
-      --bg:#0b0e14; 
-      --card:#121622; 
-      --txt:#e6e6e6; 
-      --muted:#a8b0c0; 
-      --acc:#4fb3ff;
-      --chip:#1b2030; 
-      --bd:#1e2433; 
-      --shadow:rgba(0,0,0,.25);
+      --bg:#0b0e14; --card:#121622; --txt:#e6e6e6; --muted:#a8b0c0; --acc:#4fb3ff;
+      --chip:#1b2030; --bd:#1e2433; --shadow:rgba(0,0,0,.25);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -30,11 +26,13 @@
       background: var(--bg);
       color: var(--txt);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a { color: var(--acc); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    
     .wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
 
     header {
@@ -83,11 +81,10 @@
     .lang-switch {
       position: absolute;
       top: 12px;
-      right: 0;
+      right: -240px;
       display: flex;
       gap: 8px;
     }
-
     .lang-switch button {
       width: 36px;
       height: 36px;
@@ -99,12 +96,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.15s ease, outline 0.15s ease;
     }
-
-    .lang-switch img {
-      width: 26px;
-      height: 26px;
+    .lang-switch button img {
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
       border-radius: 50%;
+    }
+    .lang-switch button:hover { transform: scale(1.08); }
+    .lang-switch button[aria-pressed="true"] {
+      outline: 2px solid var(--acc);
+      outline-offset: 2px;
     }
 
     /* Hero section */
@@ -119,7 +122,9 @@
       border-radius: 16px;
       padding: 18px;
     }
+    .hero h2 { margin: 0 0 6px; }
 
+    /* Carousel */
     .carousel {
       position: relative;
       width: 100%;
@@ -129,15 +134,13 @@
       border: 1px solid var(--bd);
       background: #0e1422;
     }
-
     .carousel img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: opacity .35s ease;
       display: block;
+      transition: opacity .35s ease;
     }
-
     .nav {
       position: absolute;
       top: 50%;
@@ -149,50 +152,51 @@
       cursor: pointer;
       padding: 6px 10px;
       border-radius: 50%;
+      line-height: 1;
     }
-
+    .nav:hover { background: rgba(0,0,0,.65); }
     .prev { left: 8px; }
     .next { right: 8px; }
-
     .dots {
       position: absolute;
       left: 0;
       right: 0;
       bottom: 8px;
       display: flex;
-      justify-content: center;
       gap: 6px;
+      justify-content: center;
     }
-
     .dot {
       width: 8px;
       height: 8px;
-      background: rgba(255,255,255,.4);
-      border-radius: 50%;
+      border-radius: 999px;
+      background: rgba(255,255,255,.35);
+      border: 1px solid rgba(0,0,0,.25);
       cursor: pointer;
     }
+    .dot.active { background: #fff; }
 
-    .dot.active { background: white; }
-
+    /* Cards grid */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
       margin-top: 18px;
     }
-
     .card {
       background: var(--card);
       border: 1px solid var(--bd);
       border-radius: 16px;
       padding: 16px;
-      transition: transform .15s ease;
+      transition: transform .15s ease, border-color .15s ease;
     }
-
     .card:hover {
       transform: translateY(-3px);
+      border-color: var(--acc);
     }
-
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 8px 0 12px; color: var(--muted); }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; }
     .meta span {
       font-size: 12px;
       background: #0e1422;
@@ -205,114 +209,145 @@
     @media (max-width: 800px) {
       .hero { grid-template-columns: 1fr; }
     }
-
     @media (max-width: 600px) {
       header { flex-direction: column; align-items: flex-start; }
-      .lang-switch { position: static; margin-left: auto; }
+      .lang-switch { position: static; align-self: flex-end; margin-left: auto; }
     }
+
+  
   </style>
 </head>
 
 <body>
 
-<div class="wrap">
-
-<header>
-  <img src="assets/avatar.jpeg" alt="Profile photo" />
-  <div class="title">
-    <h1>Joan Carrillo — Industrial Computer Engineering & Robotics</h1>
-    <p>Focused on robotics, control systems and automation.</p>
-    <div class="chips">
-      <span class="chip">ROS2</span>
-      <span class="chip">OpenCV</span>
-      <span class="chip">Python</span>
-      <span class="chip">C++</span>
-      <span class="chip">PLC</span>
-    </div>
+  <div class="bg-container">
+   <video id="bg-video" autoplay muted loop playsinline preload="metadata">
+    <source src="assets/bg-anim.mp4" type="video/mp4">
+   </video>
   </div>
 
-  <div class="lang-switch">
-    <button><img src="assets/flag-en.png" alt="English"></button>
-    <button><img src="assets/flag-es.png" alt="Español"></button>
-  </div>
-</header>
 
-<section class="hero">
-  <div>
-    <h2>Featured Projects</h2>
-    <p>Selected projects with documentation and code.</p>
-    <p><a class="btn" href="assets/CV_Joan.pdf" target="_blank">Download CV</a></p>
-  </div>
 
-  <div class="carousel">
-    <button class="nav prev">❮</button>
-    <img id="carousel-image" src="assets/robots1.jpeg" alt="Project image" />
-    <div class="dots"></div>
-    <button class="nav next">❯</button>
-  </div>
-</section>
+  <!-- 🔹 Contenido principal -->
+  <div class="wrap">
+    <header>
+      <img src="assets/avatar.jpeg" alt="Profile photo of Joan Carrillo" />
+      <div class="title">
+        <h1 data-i18n="header_title">Joan Carrillo — Industrial Computer Engineering & Robotics</h1>
+        <p data-i18n="header_sub">Focused on control systems, computer vision and automation. Looking for junior roles in Europe (robotics / controls / software).</p>
+        <div class="chips" aria-label="Skills">
+          <span class="chip">Maths · Physics</span>
+          <span class="chip">Machine Learning</span>
+          <span class="chip">ROS · ROS2</span>
+          <span class="chip">Python · C++</span>
+          <span class="chip">KUKA · ABB · FANUC</span>
+          <span class="chip" data-i18n="chip_cv">Computer Vision</span>
+          <span class="chip">Linux</span>
+        </div>
+      </div>
 
-<section>
-  <div class="grid">
-    <div class="card">
-      <h3>Vision-based Manipulation</h3>
-      <p>ROS2 + OpenCV for ABB robot.</p>
-      <div class="meta"><span>ROS2</span> <span>OpenCV</span> <span>Python</span></div>
-    </div>
-  </div>
-</section>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true" title="English">
+          <img src="assets/flag-en.png" alt="English flag" />
+        </button>
+        <button type="button" data-lang="es" aria-pressed="false" title="Español">
+          <img src="assets/flag-es.png" alt="Spanish flag" />
+        </button>
+      </div>
+    </header>
 
-<section>
-  <h2>Contact</h2>
-  <p>
-    Email: joaneet27@gmail.com ·
-    GitHub: joanet27-root ·
-    LinkedIn: Joan Carrillo
-  </p>
-</section>
+    <section class="hero" aria-labelledby="feat">
+      <div>
+        <h2 id="feat" data-i18n="feat_title">Featured Projects</h2>
+        <p data-i18n="feat_text">
+          A brief selection of projects including code, videos and technical notes. 
+          See more on my <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+        <p>
+          <a class="btn" href="assets/CV_Joan.pdf" target="_blank" rel="noopener" data-i18n="btn_cv">Download CV (PDF)</a>
+        </p>
+      </div>
 
-<footer>© <span id="y"></span> Joan Carrillo</footer>
+      <div class="carousel" role="region" aria-label="Robotics gallery">
+        <button class="nav prev" aria-label="Previous image" type="button">❮</button>
+        <img id="carousel-image" src="assets/robots1.jpeg" alt="Industrial robotics photo 1" loading="eager" />
+        <div class="dots" aria-hidden="true"></div>
+        <button class="nav next" aria-label="Next image" type="button">❯</button>
+      </div>
+    </section>
 
+    <section>
+      <div class="grid">
+        <article class="card">
+          <h3 data-i18n="p1_title">Vision-based Manipulation (ROS2 + OpenCV)</h3>
+          <p data-i18n="p1_text">Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.</p>
+          <div class="meta"><span>ROS2</span><span>OpenCV</span><span>Python</span><span>ABB</span></div>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a> · <a href="#" aria-disabled="true" title="Video coming soon" data-i18n="video">Video</a></p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="p2_title">PLC + SCADA for Assembly Cell</h3>
+          <p data-i18n="p2_text">Sequential control, interlocks, and HMI. Simulated in Factory I/O with electrical documentation and fault handling.</p>
+          <div class="meta"><span>TIA Portal</span><span>WinCC</span><span>IEC 61131-3</span></div>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a></p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="p3_title">Mobile Robot Localization (EKF + LiDAR)</h3>
+          <p data-i18n="p3_text">Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.</p>
+          <div class="meta"><span>C++</span><span>EKF</span><span>LiDAR</span></div>
+          <p><a href="https://github.com/joanet27-root" target="_blank" rel="noopener" data-i18n="repo">Repository</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-i18n="contact">Contact</h2>
+      <p>
+        <strong>Email:</strong> <a href="mailto:joaneet27@gmail.com">joaneet27@gmail.com</a> ·
+        <strong>GitHub:</strong> <a href="https://github.com/joanet27-root" target="_blank" rel="noopener">@joanet27-root</a> ·
+        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joan-carrillo-82250b268/" target="_blank" rel="noopener">/in/joan-carrillo</a>
+      </p>
+      <p><span data-i18n="copyright_prefix">©</span> <span id="y"></span> Joan Carrillo. <span data-i18n="built">Built with GitHub Pages.</span></p>
+    </section>
+
+        <footer data-i18n="tip">Tip: each repository should include a README with images, requirements, and usage steps.</footer>
+  </div> 
 </div>
 
-<script>
-document.getElementById("y").textContent = new Date().getFullYear();
-
-// Carousel JS
-const images = ["assets/robots1.jpeg","assets/robots2.jpeg","assets/robots3.jpeg"];
-const img = document.getElementById("carousel-image");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
-const dotsWrap = document.querySelector(".dots");
-let index = 0, timer = null;
-
-images.forEach((_, i) => {
-  const d = document.createElement("div");
-  d.className = "dot" + (i===0 ? " active" : "");
-  d.onclick = () => goTo(i);
-  dotsWrap.appendChild(d);
-});
-
-function goTo(i) {
-  index = (i + images.length) % images.length;
-  img.style.opacity = 0.3;
-  setTimeout(() => {
-    img.src = images[index];
-    img.style.opacity = 1;
-  }, 120);
-  updateDots();
-}
-
-function updateDots() {
-  [...dotsWrap.children].forEach((d,i) =>
-    d.classList.toggle("active", i === index)
-  );
-}
-
-nextBtn.onclick = () => goTo(index + 1);
-prevBtn.onclick = () => goTo(index - 1);
-setInterval(() => nextBtn.onclick(), 5000);
-</script>
-
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const images = ["assets/robots1.jpeg","assets/robots2.jpeg","assets/robots3.jpeg"];
+    const img = document.getElementById("carousel-image");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+    const dotsWrap = document.querySelector(".dots");
+    let index = 0, timer = null;
+    images.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "dot" + (i===0 ? " active" : "");
+      d.type = "button";
+      d.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const updateDots = () => ([...dotsWrap.children]).forEach((d,i)=>d.classList.toggle("active", i===index));
+    const goTo = (i) => {
+      index = (i+images.length)%images.length;
+      img.style.opacity = .25;
+      setTimeout(()=>{ img.src = images[index]; img.style.opacity = 1; }, 120);
+      updateDots(); restart();
+    };
+    const next = ()=>goTo(index+1), prev = ()=>goTo(index-1);
+    nextBtn.addEventListener("click", next); 
+    prevBtn.addEventListener("click", prev);
+    const start=()=>{ timer=setInterval(next,5000); };
+    const stop =()=>{ if(timer) clearInterval(timer); };
+    const restart=()=>{ stop(); start(); };
+    const carousel = document.querySelector(".carousel");
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+    start();
+  </script>
 </body>
 </html>
+
