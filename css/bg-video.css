@@ -32,7 +32,7 @@
   visibility: visible;
 }
 
-/* Contenido arriba */
+/* Contenido por encima del vídeo */
 .wrap {
   position: relative;
   z-index: 1;
