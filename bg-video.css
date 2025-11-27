@@ -4,36 +4,32 @@
   min-height: 100vh;
 }
 
-/* LADOS */
+/* LATERALES */
 .side-video {
-  position: relative;
   overflow: hidden;
   background: #0b0e14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .side-video video {
-  position: absolute;
-  top: 0;
-  left: 50%;
   height: 100%;
+  max-height: 100vh;
   width: auto;
-  transform: translateX(-50%);
   object-fit: contain;
   opacity: 0.55;
-  mix-blend-mode: screen;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
-/* LADO DERECHO ES REFLEJO DEL IZQUIERDO */
-.side-video.mirror::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  transform: scaleX(-1);
+/* CONTENIDO */
+.wrap {
+  position: relative;
+  z-index: 1;
 }
 
-/* MÓVIL */
+/* MÓVIL: APAGAMOS */
 @media (max-width: 900px) {
   .layout {
     display: block;
