@@ -58,8 +58,7 @@ const translations = {
     p1_text: `Object detection and pose estimation using OpenCV. Pick & place with ABB arm controlled via ROS2 nodes in Python.`,
     p2_title: `Proprietary neural network (CNN) for image processing`,
     p2_text: `Play the famous "Rock, paper, scissors, lizard, Spock" game using a webcam and Python.`,
-    p3_title: `Mobile Robot Localization (EKF + LiDAR)`,
-    p3_text: `Sensor fusion for differential robot using EKF and SLAM Toolbox for mapping and navigation.`,
+
     repo: `Repository`,
     video: `Video`,
     contact: `Contact`,
@@ -78,8 +77,6 @@ const translations = {
     p1_text: `Detección de objetos y estimación de pose usando OpenCV. Pick & place con brazo ABB controlado mediante nodos ROS2 en Python.`,
     p2_title: `Red neuronal propia (CNN) para procesamiento de imagenes`,
     p2_text: `Juego del famoso "Piedra papel tijera lagarto Spock" mediante Webcam + Python.`,
-    p3_title: `Localización de Robot Móvil (EKF + LiDAR)`,
-    p3_text: `Fusión de sensores para robot diferencial usando EKF y SLAM Toolbox para mapeo y navegación.`,
     repo: `Repositorio`,
     video: `Vídeo`,
     contact: `Contacto`,
